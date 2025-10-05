@@ -4,6 +4,7 @@ import { Suspense, useRef } from "react";
 import Satelite from "./satelite";
 import Saturn from "./saturn";
 import Sun from "./sun";
+import IAFormSection from "./iaFormSection";  
 import Planet from "./planet";
 
 function ScrollScene() {
@@ -188,6 +189,10 @@ function ScrollText() {
     </div>
   </div>
 </section>
+
+
+ <IAFormSection/>
+
 
 {/* 🚀 Sección 4 — Prueba el modelo IA */}
 <section
