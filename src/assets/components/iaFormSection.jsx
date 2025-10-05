@@ -5,37 +5,37 @@ export default function IAFormSection() {
   const [loading, setLoading] = useState(false);
 
   const fields = [
-    { label: "Período orbital", name: "koi_period" },
-    { label: "Impacto del tránsito", name: "koi_impact" },
-    { label: "Duración del tránsito", name: "koi_duration" },
-    { label: "Profundidad del tránsito", name: "koi_depth" },
-    { label: "Radio relativo (planeta/estrella)", name: "koi_ror" },
-    { label: "Densidad estelar", name: "koi_srho" },
-    { label: "Radio planetario", name: "koi_prad" },
-    { label: "Semieje mayor", name: "koi_sma" },
-    { label: "Temperatura de equilibrio", name: "koi_teq" },
-    { label: "Flujo incidente", name: "koi_insol" },
-    { label: "Relación distancia-radio", name: "koi_dor" },
-    { label: "Relación señal-ruido", name: "koi_model_snr" },
-    { label: "Temperatura efectiva estelar", name: "koi_steff" },
-    { label: "Gravedad superficial estelar", name: "koi_slogg" },
-    { label: "Radio estelar", name: "koi_srad" },
+    { label: "Orbital period", name: "koi_period" },
+    { label: "Transit impact", name: "koi_impact" },
+    { label: "Transit duration", name: "koi_duration" },
+    { label: "Transit depth", name: "koi_depth" },
+    { label: "Planet/star radius ratio", name: "koi_ror" },
+    { label: "Stellar density", name: "koi_srho" },
+    { label: "Planet radius", name: "koi_prad" },
+    { label: "Semi-major axis", name: "koi_sma" },
+    { label: "Equilibrium temperature", name: "koi_teq" },
+    { label: "Incident flux", name: "koi_insol" },
+    { label: "Distance-radius ratio", name: "koi_dor" },
+    { label: "Signal-to-noise ratio", name: "koi_model_snr" },
+    { label: "Stellar effective temperature", name: "koi_steff" },
+    { label: "Stellar surface gravity", name: "koi_slogg" },
+    { label: "Stellar radius", name: "koi_srad" },
   ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setResult("⏳ Analizando datos...");
+    setResult("⏳ Analyzing data...");
     const formData = new FormData(e.target);
-    const datos = Object.fromEntries(formData.entries());
+    const data = Object.fromEntries(formData.entries());
 
     try {
       const res = await fetch(
-        "https://us-central1-tu-proyecto.cloudfunctions.net/predecirExoplaneta",
+        "https://us-central1-your-project.cloudfunctions.net/predictExoplanet",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(datos),
+          body: JSON.stringify(data),
         }
       );
 
@@ -44,14 +44,14 @@ export default function IAFormSection() {
       }
 
       const json = await res.json();
-      if (json.prediccion === 1 || json.es_exoplaneta) {
-        setResult("✅ ¡Se detectan indicios de un exoplaneta!");
+      if (json.prediction === 1 || json.is_exoplanet) {
+        setResult("✅ Signs of an exoplanet detected!");
       } else {
-        setResult("❌ No se detecta exoplaneta en los datos ingresados.");
+        setResult("❌ No exoplanet detected in the given data.");
       }
     } catch (err) {
       console.error(err);
-      setResult("⚠️ Error al procesar la predicción.");
+      setResult("⚠️ Error processing prediction.");
     } finally {
       setLoading(false);
     }
@@ -80,10 +80,10 @@ export default function IAFormSection() {
         }}
       >
         <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-          🚀 Prueba el modelo de IA
+          🚀 Test the AI Model
         </h2>
         <p className="text-base md:text-lg mb-6 text-gray-300">
-          Ingresa los parámetros del sistema estelar para descubrir si podría contener un exoplaneta.
+          Enter the stellar system parameters to see if it could contain an exoplanet.
         </p>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -109,7 +109,7 @@ export default function IAFormSection() {
               disabled={loading}
               className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded shadow-md transition-all disabled:opacity-50"
             >
-              {loading ? "Analizando..." : "Analizar datos"}
+              {loading ? "Analyzing..." : "Analyze data"}
             </button>
           </div>
         </form>
