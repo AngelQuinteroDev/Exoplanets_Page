@@ -126,7 +126,7 @@ function ScrollText() {
         zIndex: 10, // para que quede encima del canvas 3D
       }}
     >
-{/* 🌌 Sección 1 */}
+{/* 🌌 Hero Section / Intro */}
 <section
   style={{
     width: "100%",
@@ -140,6 +140,7 @@ function ScrollText() {
     background: "transparent",
   }}
 >
+  {/* 🪐 Caja de texto a la izquierda */}
   <div
     style={{
       flex: "1 1 500px",
@@ -147,46 +148,68 @@ function ScrollText() {
       justifyContent: "center",
       alignItems: "center",
       padding: "1rem",
-    }}
-  >
-    <img
-      src="public/exoplanetas.jpeg"
-      alt="Exoplanet visualization"
-      style={{
-        width: "100%",
-        maxWidth: "500px",
-        borderRadius: "1rem",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
-      }}
-    />
-  </div>
-
-  <div
-    style={{
-      flex: "1 1 500px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "1rem",
+      order: 1,
     }}
   >
     <div
       style={{
-        backgroundColor: "rgba(40, 40, 40, 0.6)",
-        padding: "2rem",
+        backgroundColor: "rgba(40, 40, 40, 0.65)",
+        padding: "2.5rem",
         borderRadius: "1rem",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-        backdropFilter: "blur(10px)",
+        boxShadow: "0 4px 25px rgba(0,0,0,0.4)",
+        backdropFilter: "blur(12px)",
         maxWidth: "600px",
+        textAlign: "left",
       }}
     >
-      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-        🌌 Proyecto: IA para Detectar Exoplanetas
+      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+        ExoKeplerAlly:
+        <br />
+        <span className="text-blue-400">
+          Unlocking the universe, one exoplanet at a time.
+        </span>
       </h1>
-      <p className="text-base md:text-lg" style={{ lineHeight: "1.6", color: "#ddd" }}>
-        Explora cómo la inteligencia artificial ayuda a descubrir nuevos mundos fuera del sistema solar.
+
+      <p
+        className="text-base md:text-lg"
+        style={{
+          lineHeight: "1.8",
+          color: "#ddd",
+          marginTop: "1rem",
+        }}
+      >
+        Thousands of exoplanets have been identified manually, slowly.  
+        Now, with <strong>ExoKeplerAlly</strong>, we wield the power of{" "}
+        <span className="text-blue-300">artificial intelligence</span>,{" "}
+        NASA’s <strong>Kepler datasets</strong>, and{" "}
+        <span className="text-blue-300">web design</span> to accelerate this
+        search — transforming raw data into discoveries.
       </p>
     </div>
+  </div>
+
+  {/* 🌠 Imagen a la derecha */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+      order: 2,
+    }}
+  >
+    <img
+      src="/exoplanetas.jpeg"
+      alt="Exoplanet visualization"
+      style={{
+        width: "100%",
+        maxWidth: "520px",
+        borderRadius: "1rem",
+        boxShadow: "0 6px 25px rgba(0,0,0,0.5)",
+        objectFit: "cover",
+      }}
+    />
   </div>
 </section>
 
