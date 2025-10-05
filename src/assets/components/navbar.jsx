@@ -18,7 +18,7 @@ export default function Navbar() {
       {/* Logo + Nombre */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <img
-          src="/public/ExoKepler_LogoAlly.png" // cambia esta ruta por la ubicación real del logo
+          src="/ExoKepler_LogoAlly.png" // cambia esta ruta por la ubicación real del logo
           alt="Logo ExoAI"
           style={{ width: '170px', height: '60px' }}
         />
