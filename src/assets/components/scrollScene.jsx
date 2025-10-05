@@ -2,6 +2,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { ScrollControls, Scroll, useScroll, Html } from "@react-three/drei";
 import { Suspense, useRef } from "react";
 import Satelite from "./satelite";
+import Saturn from "./saturn";
+import Planet from "./planet";
 
 function ScrollScene() {
   return (
@@ -59,13 +61,9 @@ function ScrollObjects() {
       </group>
 
       {/* Planeta (más abajo) */}
-      <mesh ref={planetRef} position={[0, -1000, 0]}>
-        <sphereGeometry args={[2, 32, 32]} />
-        <meshStandardMaterial
-          color="#4c9fff"
-          emissive="#1b2f80"
-          emissiveIntensity={0.6}
-        />
+      <mesh ref={planetRef} position={[0, -10, 0]}>
+        <Saturn scale={0}/>
+
       </mesh>
     </>
   );
