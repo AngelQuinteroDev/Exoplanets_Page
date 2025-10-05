@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function IAFormSection() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const fields = [
     { label: "Orbital period", name: "koi_period" },
@@ -22,33 +23,30 @@ export default function IAFormSection() {
     { label: "Stellar radius", name: "koi_srad" },
   ];
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setResult("⏳ Analyzing data...");
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-
     try {
       const res = await fetch(
         "https://us-central1-your-project.cloudfunctions.net/predictExoplanet",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify(formData),
         }
       );
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
-      if (json.prediction === 1 || json.is_exoplanet) {
+
+      if (json.prediction === 1 || json.is_exoplanet)
         setResult("✅ Signs of an exoplanet detected!");
-      } else {
-        setResult("❌ No exoplanet detected in the given data.");
-      }
+      else setResult("❌ No exoplanet detected in the given data.");
     } catch (err) {
       console.error(err);
       setResult("⚠️ Error processing prediction.");
@@ -70,51 +68,53 @@ export default function IAFormSection() {
     >
       <div
         style={{
-          backgroundColor: "rgba(40, 40, 40, 0.6)",
-          padding: "2rem",
+          backgroundColor: "rgba(40, 40, 40, 0.65)",
+          padding: "2.5rem",
           borderRadius: "1rem",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-          backdropFilter: "blur(10px)",
-          maxWidth: "900px",
+          boxShadow: "0 4px 25px rgba(0,0,0,0.4)",
+          backdropFilter: "blur(12px)",
+          maxWidth: "1000px",
           width: "100%",
         }}
       >
-        <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
+        <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4 text-center">
           🚀 Test the AI Model
         </h2>
-        <p className="text-base md:text-lg mb-6 text-gray-300">
-          Enter the stellar system parameters to see if it could contain an exoplanet.
+        <p className="text-base md:text-lg mb-8 text-gray-300 text-center">
+          Enter the stellar system parameters below to analyze the possibility of an exoplanet.
         </p>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
           {fields.map((f) => (
-            <div key={f.name} className="text-left">
-              <label className="block text-gray-200 text-sm mb-1 font-semibold">
-                {f.label}
+            <div key={f.name} className="flex items-center gap-4">
+              <label className="text-gray-300 text-sm w-48 flex-shrink-0">
+                {f.label} <span className="text-gray-500 text-xs">({f.name})</span>
               </label>
-              <p className="text-gray-400 text-xs mb-2 italic">{f.name}</p>
               <input
-                name={f.name}
                 type="number"
+                name={f.name}
                 step="any"
                 required
-                className="p-3 rounded bg-gray-800 text-white w-full focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                value={formData[f.name] || ""}
+                onChange={handleChange}
+                className="p-2.5 rounded bg-gray-800 text-white flex-1 outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           ))}
 
-          <div className="col-span-1 md:col-span-2 flex justify-center mt-2">
+          <div className="col-span-1 md:col-span-2 flex justify-center mt-8">
             <button
-              type="submit"
+              type="button"
               disabled={loading}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded shadow-md transition-all disabled:opacity-50"
+              onClick={handleSubmit}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-10 py-3 rounded shadow-md transition-all disabled:opacity-50 font-medium"
             >
-              {loading ? "Analyzing..." : "Analyze data"}
+              {loading ? "Analyzing..." : "Analyze Data"}
             </button>
           </div>
-        </form>
+        </div>
 
-        <div className="text-white text-lg mt-6 text-center font-semibold">
+        <div className="text-white text-lg mt-8 text-center font-semibold">
           {result}
         </div>
       </div>
