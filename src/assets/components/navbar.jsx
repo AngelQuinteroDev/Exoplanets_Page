@@ -12,15 +12,31 @@ export default function Navbar() {
         top: 0,
         width: '100%',
         zIndex: 10,
-        backdropFilter: 'blur(10px)'
+        backdropFilter: 'blur(10px)',
       }}
     >
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>🌌 ExoAI Explorer</h1>
-      <ul style={{ display: 'flex', gap: '1.5rem', listStyle: 'none', margin: 0 }}>
+      {/* Logo + Nombre */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <img
+          src="/public/ExoKepler_LogoAlly.png" // cambia esta ruta por la ubicación real del logo
+          alt="Logo ExoAI"
+          style={{ width: '170px', height: '60px' }}
+        />
+      </div>
+
+      {/* Enlaces del nav */}
+      <ul
+        style={{
+          display: 'flex',
+          gap: '1.5rem',
+          listStyle: 'none',
+          margin: 0,
+        }}
+      >
         <li style={{ cursor: 'pointer' }}>Inicio</li>
         <li style={{ cursor: 'pointer' }}>Cómo funciona</li>
         <li style={{ cursor: 'pointer' }}>Nuestro equipo</li>
       </ul>
     </nav>
-  )
+  );
 }
