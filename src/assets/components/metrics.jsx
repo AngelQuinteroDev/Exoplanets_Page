@@ -5,6 +5,12 @@ import {
   RadialBar,
   Legend,
   Tooltip,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Cell,
 } from "recharts";
 
 export default function ModelMetrics() {
@@ -15,10 +21,10 @@ export default function ModelMetrics() {
     fetch("https://exokeplerally-production.up.railway.app/metrics")
       .then((res) => res.json())
       .then((data) => {
-        // Redondear los valores a 4 decimales
         const formatted = Object.entries(data).map(([key, value]) => ({
-          name: key.replace("_", " ").toUpperCase(),
-          value: parseFloat((value * 100).toFixed(2)), // Pasar a porcentaje
+          name: key.replace(/_/g, " ").toUpperCase(),
+          value: parseFloat((value * 100).toFixed(2)),
+          rawValue: value,
           fill: getColor(key),
         }));
         setMetrics(formatted);
@@ -27,7 +33,6 @@ export default function ModelMetrics() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Colores personalizados según la métrica
   const getColor = (key) => {
     switch (key) {
       case "accuracy":
@@ -41,6 +46,22 @@ export default function ModelMetrics() {
       default:
         return "#8884d8";
     }
+  };
+
+  const CustomLegend = ({ payload }) => {
+    return (
+      <div className="flex flex-col gap-2 text-sm">
+        {payload.map((entry, index) => (
+          <div key={index} className="flex items-center gap-2">
+            <div
+              style={{ backgroundColor: entry.color }}
+              className="w-4 h-4 rounded"
+            />
+            <span className="text-white">{entry.value}</span>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -58,65 +79,158 @@ export default function ModelMetrics() {
         color: "white",
       }}
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center">
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
         📊 Model Performance Metrics
       </h2>
 
       {loading ? (
-        <p className="text-gray-400 text-lg animate-pulse">
-          Loading model metrics...
-        </p>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-gray-400 text-lg">Loading model metrics...</p>
+        </div>
       ) : (
         <>
-          {/* --- Chart Section --- */}
-          <div className="w-full max-w-4xl h-[400px] md:h-[500px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadialBarChart
-                cx="50%"
-                cy="50%"
-                innerRadius="20%"
-                outerRadius="90%"
-                barSize={25}
-                data={metrics}
-              >
-                <RadialBar
-                  minAngle={15}
-                  background
-                  clockWise
-                  dataKey="value"
-                  cornerRadius={10}
-                />
-                <Legend
-                  iconSize={16}
-                  layout="vertical"
-                  verticalAlign="middle"
-                  align="right"
-                  formatter={(value) => <span style={{ color: "#fff" }}>{value}</span>}
-                />
-                <Tooltip
-                  formatter={(val) => [`${val}%`, "Value"]}
-                  contentStyle={{ backgroundColor: "#222", borderRadius: "10px" }}
-                />
-              </RadialBarChart>
-            </ResponsiveContainer>
+          {/* Gráficos lado a lado */}
+          <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            {/* Radial Bar Chart */}
+            <div className="bg-gray-800/50 backdrop-blur rounded-2xl p-6 border border-gray-700">
+              <h3 className="text-xl font-semibold mb-4 text-center">
+                Radial Performance View
+              </h3>
+              <ResponsiveContainer width="100%" height={350}>
+                <RadialBarChart
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="10%"
+                  outerRadius="100%"
+                  barSize={18}
+                  data={metrics}
+                  startAngle={180}
+                  endAngle={-180}
+                >
+                  <RadialBar
+                    minAngle={15}
+                    background={{ fill: "#2a2a2a" }}
+                    clockWise
+                    dataKey="value"
+                    cornerRadius={8}
+                  />
+                  <Legend
+                    iconSize={12}
+                    layout="vertical"
+                    verticalAlign="middle"
+                    align="right"
+                    content={<CustomLegend />}
+                  />
+                  <Tooltip
+                    formatter={(val) => [`${val}%`, "Score"]}
+                    contentStyle={{
+                      backgroundColor: "#1a1a1a",
+                      borderRadius: "10px",
+                      border: "1px solid #444",
+                    }}
+                    labelStyle={{ color: "#fff" }}
+                  />
+                </RadialBarChart>
+              </ResponsiveContainer>
+            </div>
+
+            {/* Bar Chart */}
+            <div className="bg-gray-800/50 backdrop-blur rounded-2xl p-6 border border-gray-700">
+              <h3 className="text-xl font-semibold mb-4 text-center">
+                Comparative View
+              </h3>
+              <ResponsiveContainer width="100%" height={350}>
+                <BarChart data={metrics}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: "#aaa", fontSize: 12 }}
+                    angle={-20}
+                    textAnchor="end"
+                    height={80}
+                  />
+                  <YAxis
+                    tick={{ fill: "#aaa" }}
+                    domain={[0, 100]}
+                    label={{
+                      value: "Percentage (%)",
+                      angle: -90,
+                      position: "insideLeft",
+                      fill: "#aaa",
+                    }}
+                  />
+                  <Tooltip
+                    formatter={(val) => [`${val}%`, "Score"]}
+                    contentStyle={{
+                      backgroundColor: "#1a1a1a",
+                      borderRadius: "10px",
+                      border: "1px solid #444",
+                    }}
+                    labelStyle={{ color: "#fff" }}
+                  />
+                  <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                    {metrics.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
-          {/* --- Numeric Summary --- */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 text-center">
-            {metrics.map((m) => (
+          {/* Cards de métricas */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-6xl">
+            {metrics.map((m, idx) => (
               <div
                 key={m.name}
-                className="bg-gray-800 hover:bg-gray-700 transition-all rounded-xl p-5 shadow-lg border border-gray-700"
+                className="bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 transition-all duration-300 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-gray-600 hover:scale-105 transform"
+                style={{
+                  animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both`,
+                }}
               >
-                <h3 className="text-xl font-semibold mb-2 text-white">
-                  {m.name}
-                </h3>
-                <p className="text-3xl font-bold text-blue-400">{m.value}%</p>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-semibold text-gray-300">
+                    {m.name}
+                  </h3>
+                  <div
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: m.fill }}
+                  />
+                </div>
+                <p
+                  className="text-4xl font-bold mb-2"
+                  style={{ color: m.fill }}
+                >
+                  {m.value}%
+                </p>
+                <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-1000"
+                    style={{
+                      width: `${m.value}%`,
+                      backgroundColor: m.fill,
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </div>
         </>
       )}
+
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 }
