@@ -80,7 +80,11 @@ export default function ModelMetrics() {
       }}
     >
       <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        📊 Model Performance Metrics
+               <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />Model Performance Metrics
       </h2>
 
       {loading ? (
