@@ -7,6 +7,7 @@ import Sun from "./sun";
 import IAFormSection from "./iaFormSection";  
 import IAInstructions from "./iaInstructions";  
 import ProjectDocumentation from "./projectDocumentation";  
+import ModelMetrics from "./metrics";  
 import Planet from "./planet";
 
 function ScrollScene() {
@@ -484,13 +485,7 @@ width: "100%",
 
  <IAFormSection/>
 
-
-
-
-
-
-
-
+ <ModelMetrics/>
 
 {/* 👥 Our Crew Section */}
 <section
