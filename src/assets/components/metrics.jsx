@@ -128,8 +128,10 @@ export default function ModelMetrics() {
                       backgroundColor: "#1a1a1a",
                       borderRadius: "10px",
                       border: "1px solid #444",
+                      color: "#fff",
                     }}
                     labelStyle={{ color: "#fff" }}
+                    itemStyle={{ color: "#fff" }}
                   />
                 </RadialBarChart>
               </ResponsiveContainer>
@@ -166,8 +168,10 @@ export default function ModelMetrics() {
                       backgroundColor: "#1a1a1a",
                       borderRadius: "10px",
                       border: "1px solid #444",
+                      color: "#fff",
                     }}
                     labelStyle={{ color: "#fff" }}
+                    itemStyle={{ color: "#fff" }}
                   />
                   <Bar dataKey="value" radius={[8, 8, 0, 0]}>
                     {metrics.map((entry, index) => (
