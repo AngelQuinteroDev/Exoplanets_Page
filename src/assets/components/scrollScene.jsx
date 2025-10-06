@@ -5,6 +5,7 @@ import Satelite from "./satelite";
 import Saturn from "./saturn";
 import Sun from "./sun";
 import IAFormSection from "./iaFormSection";  
+import IAInstructions from "./iaInstructions";  
 import Planet from "./planet";
 
 function ScrollScene() {
@@ -483,43 +484,9 @@ width: "100%",
  <IAFormSection/>
 
 
-{/* 🚀 Sección 4 — Prueba el modelo IA */}
-<section
-
-  style={{
-    width: "100%",
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "3rem 1rem",
-  }}
->
-  <div
-    style={{
-      backgroundColor: "rgba(40, 40, 40, 0.7)",
-      padding: "3rem 2rem",
-      borderRadius: "1rem",
-      maxWidth: "900px",
-      width: "100%",
-      textAlign: "center",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.4)",
-      backdropFilter: "blur(8px)",
-    }}
-  >
-    <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
-      🚀 Prueba el modelo de IA
-    </h2>
-    <p className="text-base md:text-lg mb-8 text-gray-300">
-      Ingresa los parámetros del sistema estelar y descubre si podría tener un exoplaneta 🌍
-    </p>
 
 
 
-    {/* Resultado */}
-    <div id="result" className="text-white text-lg mt-8 text-center font-semibold"></div>
-  </div>
-</section>
 
 
 
@@ -642,83 +609,11 @@ width: "100%",
 </section>
 
 
-            {/* 🧠 Sección 3 */}
-      <section style={sectionStyle}>
-        <div style={boxStyle}>
-          <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-            🧠 Cómo se hizo
-          </h2>
-          <p className="text-base md:text-lg" style={textStyle}>
-            Entrenamos una red neuronal convolucional con datos del telescopio
-            Kepler, procesando curvas de luz y clasificando patrones.
-          </p>
-        </div>
-      </section>
-
-
-            {/* 🧠 Sección 3 */}
-      <section style={sectionStyle}>
-        <div style={boxStyle}>
-          <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-            🧠 Cómo se hizo
-          </h2>
-          <p className="text-base md:text-lg" style={textStyle}>
-            Entrenamos una red neuronal convolucional con datos del telescopio
-            Kepler, procesando curvas de luz y clasificando patrones.
-          </p>
-        </div>
-      </section>
+ <IAInstructions/>
 
 
 
-{/* 🚀 Sección 4 */}
-<section style={sectionStyle}>
-  <div style={boxStyle}>
-    <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-      🚀 Prueba el modelo
-    </h2>
-    <p className="text-base md:text-lg mb-6" style={textStyle}>
-      Ingresa los parámetros del sistema estelar y descubre si podría tener un exoplaneta.
-    </p>
 
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        // aquí luego conectaremos con la API
-      }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-4"
-    >
-      {/* Campos del modelo IA */}
-      <input type="number" step="any" placeholder="koi_period" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_impact" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_duration" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_depth" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_ror" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_srho" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_prad" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_sma" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_teq" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_insol" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_dor" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_model_snr" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_steff" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_slogg" className="p-3 rounded bg-gray-800 text-white w-full" />
-      <input type="number" step="any" placeholder="koi_srad" className="p-3 rounded bg-gray-800 text-white w-full" />
-
-      <div className="col-span-1 md:col-span-2 flex justify-center mt-6">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded shadow-md transition-all"
-        >
-          Analizar datos
-        </button>
-      </div>
-    </form>
-
-    {/* Resultado (se mostrará cuando conectes con la API) */}
-    <div id="result" className="text-white text-lg mt-4 text-center"></div>
-  </div>
-</section>
     </div>
   );
 }
