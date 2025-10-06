@@ -214,6 +214,248 @@ function ScrollText() {
 </section>
 
 
+
+
+
+
+
+
+
+{/* 📝 Project Summary Section */}
+<section
+  style={{
+    width: "100%",
+    minHeight: "80vh",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left",
+    padding: "3rem 1rem",
+    background: "transparent",
+  }}
+>
+  {/* Texto */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+      order: 2,
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "rgba(40, 40, 40, 0.6)",
+        padding: "2rem",
+        borderRadius: "1rem",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+        backdropFilter: "blur(10px)",
+        maxWidth: "600px",
+      }}
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />
+   Project Summary
+      </h2>
+      <p className="text-base md:text-lg" style={{ lineHeight: "1.6", color: "#ddd" }}>
+        <strong>What did we develop?</strong> <br />
+        ExoKeplerAlly is a web platform powered by our own AI model that analyzes NASA’s open-source Kepler exoplanet dataset to classify whether a celestial candidate can be confirmed as an exoplanet or identified as a false positive.
+      </p>
+    </div>
+  </div>
+
+  {/* Imagen */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+    }}
+  >
+    <img
+      src="/Kepler_Telescope.avif"
+      alt="Exoplanet AI visualization"
+      style={{
+        width: "100%",
+        maxWidth: "500px",
+        borderRadius: "1rem",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+      }}
+    />
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+{/* 🌟 Section: How does it address the challenge? */}
+<section
+  style={{
+    width: "100%",
+    minHeight: "80vh",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left",
+    marginLeft: "2rem",
+    padding: "",
+    background: "linear-gradient(135deg, rgba(31,31,46,0.8), rgba(44,44,58,0.8))", // efecto visual distinto
+  }}
+>
+  {/* Imagen a la izquierda */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+    }}
+  >
+    <img
+      src="/LightCurves.webp"
+      alt="Automation process illustration"
+      style={{
+        width: "100%",
+        maxWidth: "500px",
+        borderRadius: "1rem",
+        boxShadow: "0 6px 25px rgba(0,0,0,0.5)",
+      }}
+    />
+  </div>
+
+  {/* Texto a la derecha */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "rgba(50, 50, 60, 0.7)",
+        padding: "2rem",
+        borderRadius: "1rem",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+        backdropFilter: "blur(12px)",
+        maxWidth: "600px",
+      }}
+    >
+<h2 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center gap-3">
+  <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />
+  How does it address the challenge?
+</h2>
+      <p className="text-base md:text-lg" style={{ lineHeight: "1.6", color: "#ddd" }}>
+        Our platform automates what was once a manual human process. It classifies exoplanet candidates. Users, regardless of their experience in astronomy, can explore the tool, understand the parameters, and test whether something is an exoplanet, using both known candidates and new data.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{/* 🌟 Section: Why is it important? */}
+<section
+  style={{
+width: "100%",
+    minHeight: "80vh",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left",
+    marginLeft: "2rem",
+    padding: "",
+    background: "linear-gradient(135deg, rgba(31,31,46,0.8), rgba(44,44,58,0.8))", // gradiente inverso
+  }}
+>
+  {/* Texto a la izquierda */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "rgba(50, 50, 60, 0.7)",
+        padding: "2rem",
+        borderRadius: "1rem",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+        backdropFilter: "blur(12px)",
+        maxWidth: "600px",
+      }}
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />
+        Why is it important?
+      </h2>
+      <p className="text-base md:text-lg" style={{ lineHeight: "1.6", color: "#ddd" }}>
+        Every new exoplanet confirmed brings us closer to answering one of humanity’s oldest questions: Are we alone in the universe? By merging AI, open data, and intuitive design, our project lowers the barrier to participation in astronomical discovery and empowers the global community to contribute to space science.
+      </p>
+    </div>
+  </div>
+
+  {/* Imagen a la derecha */}
+  <div
+    style={{
+      flex: "1 1 500px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+    }}
+  >
+    <img
+      src="/kepler-186-452.avif"
+      alt="Global contribution illustration"
+      style={{
+        width: "100%",
+        maxWidth: "500px",
+        borderRadius: "1rem",
+        boxShadow: "0 6px 25px rgba(0,0,0,0.5)",
+      }}
+    />
+  </div>
+</section>
+
+
  <IAFormSection/>
 
 
