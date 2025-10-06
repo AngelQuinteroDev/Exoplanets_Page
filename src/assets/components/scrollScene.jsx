@@ -545,6 +545,18 @@ width: "100%",
     <p className="text-base md:text-lg" style={{ maxWidth: "700px", margin: "0 auto", color: "#ccc" }}>
       Behind ExoKeplerAlly is a multidisciplinary team of engineering students who share a common passion for space and see it as the direction of humanity’s future.
     </p>
+       {/* Imagen del equipo */}
+    <img
+      src="/Crew.png" // reemplaza con la ruta de tu imagen
+      alt="Team ExoKeplerAlly"
+      style={{
+        marginTop: "1.5rem",
+        maxWidth: "100%",
+        width: "500px", // ancho máximo deseado
+        borderRadius: "1rem",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+      }}
+    />
   </div>
 
   {/* Contenedor de miembros */}
@@ -563,22 +575,22 @@ width: "100%",
       {
         name: "Sofía Orozco Pastran",
         role: "Mechatronics Engineering Student",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/sof%C3%ADa-pastr%C3%A1n/",
       },
       {
         name: "Camilo Andrés Pineda Rugeles",
         role: "Mechatronics Engineering Student",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/camilo-pineda-rugeles/",
       },
       {
         name: "Ángel Gabriel Quintero Morales",
         role: "Multimedia Engineering Student",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/angelquinterodev/",
       },
       {
         name: "David Camilo Vega Mariño",
         role: "Mechatronics Engineering Student",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/vegacamilom/",
       },
     ].map((member, index) => (
       <div
@@ -598,18 +610,6 @@ width: "100%",
         onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-5px)")}
         onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
       >
-        {/* Placeholder para foto */}
-        <div
-          style={{
-            width: "100px",
-            height: "100px",
-            borderRadius: "50%",
-            background: "#555",
-            marginBottom: "1rem",
-          }}
-        >
-          {/* Aquí puedes poner <img src="ruta.jpg" /> si tienes fotos */}
-        </div>
         <h3 className="font-bold text-lg">{member.name}</h3>
         <p style={{ color: "#ccc", marginBottom: "0.5rem" }}>{member.role}</p>
         <a
