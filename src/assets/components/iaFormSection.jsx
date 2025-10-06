@@ -33,7 +33,7 @@ export default function IAFormSection() {
     setResult("⏳ Analyzing data...");
     try {
       const res = await fetch(
-        "https://us-central1-your-project.cloudfunctions.net/predictExoplanet",
+        "https://exokeplerally-production.up.railway.app/predict",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -57,10 +57,12 @@ export default function IAFormSection() {
 
   return (
     <section
+    id="ia-form"
       style={{
         width: "100%",
         minHeight: "100vh",
         display: "flex",
+        position: "relative",
         justifyContent: "center",
         alignItems: "center",
         padding: "3rem 1rem",

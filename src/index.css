@@ -30,6 +30,12 @@ body {
   min-height: 100vh;
 }
 
+html, body {
+  scroll-behavior: smooth;
+  height: auto;
+  overflow-y: auto;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

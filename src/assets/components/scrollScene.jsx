@@ -14,7 +14,7 @@ function ScrollScene() {
         <ambientLight intensity={1} />
         <directionalLight position={[5, 5, 5]} />
         <Suspense fallback={null}>
-          <ScrollControls pages={8} damping={0.2}>
+          <ScrollControls pages={10} damping={0.2}>
             <Scroll>
               <ScrollObjects />
             </Scroll>
@@ -128,6 +128,8 @@ function ScrollText() {
     >
 {/* 🌌 Hero Section / Intro */}
 <section
+id = "hero"
+
   style={{
     width: "100%",
     minHeight: "100vh",
@@ -185,6 +187,28 @@ function ScrollText() {
         <span className="text-blue-300">web design</span> to accelerate this
         search — transforming raw data into discoveries.
       </p>
+      <button
+  onClick={() => {
+    const element = document.getElementById("ia-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  style={{
+    marginTop: "2rem",
+    backgroundColor: "#3b82f6",
+    color: "white",
+    padding: "0.75rem 1.5rem",
+    borderRadius: "0.75rem",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+  }}
+  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#2563eb")}
+  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#3b82f6")}
+>
+  🚀 Test model
+</button>
     </div>
   </div>
 
@@ -461,6 +485,7 @@ width: "100%",
 
 {/* 🚀 Sección 4 — Prueba el modelo IA */}
 <section
+
   style={{
     width: "100%",
     minHeight: "100vh",
@@ -495,6 +520,127 @@ width: "100%",
     <div id="result" className="text-white text-lg mt-8 text-center font-semibold"></div>
   </div>
 </section>
+
+
+
+
+{/* 👥 Our Crew Section */}
+<section
+  id="our-crew"
+  style={{
+    width: "100%",
+    minHeight: "80vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "3rem 1rem",
+    background: "linear-gradient(135deg, #1f1f2e, #2c2c3a)",
+    color: "white",
+  }}
+>
+  {/* Título */}
+  <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+    <h2 className="text-4xl md:text-5xl font-bold mb-2">Our Crew</h2>
+    <p className="text-base md:text-lg" style={{ maxWidth: "700px", margin: "0 auto", color: "#ccc" }}>
+      Behind ExoKeplerAlly is a multidisciplinary team of engineering students who share a common passion for space and see it as the direction of humanity’s future.
+    </p>
+  </div>
+
+  {/* Contenedor de miembros */}
+  <div
+    style={{
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      gap: "1.5rem",
+      maxWidth: "1000px",
+      width: "100%",
+    }}
+  >
+    {/* Miembro */}
+    {[
+      {
+        name: "Sofía Orozco Pastran",
+        role: "Mechatronics Engineering Student",
+        linkedin: "#",
+      },
+      {
+        name: "Camilo Andrés Pineda Rugeles",
+        role: "Mechatronics Engineering Student",
+        linkedin: "#",
+      },
+      {
+        name: "Ángel Gabriel Quintero Morales",
+        role: "Multimedia Engineering Student",
+        linkedin: "#",
+      },
+      {
+        name: "David Camilo Vega Mariño",
+        role: "Mechatronics Engineering Student",
+        linkedin: "#",
+      },
+    ].map((member, index) => (
+      <div
+        key={index}
+        style={{
+          backgroundColor: "rgba(40, 40, 40, 0.65)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+          flex: "1 1 250px",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          transition: "transform 0.3s ease",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-5px)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+      >
+        {/* Placeholder para foto */}
+        <div
+          style={{
+            width: "100px",
+            height: "100px",
+            borderRadius: "50%",
+            background: "#555",
+            marginBottom: "1rem",
+          }}
+        >
+          {/* Aquí puedes poner <img src="ruta.jpg" /> si tienes fotos */}
+        </div>
+        <h3 className="font-bold text-lg">{member.name}</h3>
+        <p style={{ color: "#ccc", marginBottom: "0.5rem" }}>{member.role}</p>
+        <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "#3b82f6",
+            textDecoration: "none",
+            fontWeight: "600",
+          }}
+        >
+          LinkedIn
+        </a>
+      </div>
+    ))}
+  </div>
+
+  {/* Mensaje final */}
+  <p
+    style={{
+      marginTop: "2rem",
+      textAlign: "center",
+      maxWidth: "700px",
+      color: "#bbb",
+    }}
+  >
+    Together, we aim to accelerate humanity’s search for new worlds — and maybe, one day, new homes.
+  </p>
+</section>
+
 
             {/* 🧠 Sección 3 */}
       <section style={sectionStyle}>
