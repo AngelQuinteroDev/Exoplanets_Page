@@ -74,7 +74,7 @@ export default function ModelMetrics() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #0a0a0a 30%, #1a1a1a 100%)",
+        background: "linear-gradient(135deg, #0a0a0aa7 30%, #1a1a1aa7 100%)",
         padding: "4rem 1rem",
         color: "white",
       }}
