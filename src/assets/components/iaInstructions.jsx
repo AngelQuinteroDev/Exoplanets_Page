@@ -99,7 +99,7 @@ export default function IAInstructions() {
 
   return (
     <section
-      id="ia-instructions"
+      id="parameters-explanation"
       style={{
         width: "100%",
         minHeight: "100vh",
@@ -112,7 +112,11 @@ export default function IAInstructions() {
       }}
     >
       <div style={{ maxWidth: "900px", textAlign: "center", marginBottom: "3rem" }}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">🚀 How to Use the AI Model</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4"> <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />How to Use the AI Model</h2>
         <p style={{ color: "#ccc", fontSize: "1.1rem" }}>
           Enter the stellar system parameters in the form below. Click on each field to learn what it represents and how the AI model uses it to predict whether a candidate is an exoplanet.
         </p>

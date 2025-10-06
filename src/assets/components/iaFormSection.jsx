@@ -55,9 +55,16 @@ export default function IAFormSection() {
     }
   };
 
+  const scrollToParameters = () => {
+    const section = document.getElementById("parameters-explanation");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
-    id="ia-form"
+      id="ia-form"
       style={{
         width: "100%",
         minHeight: "100vh",
@@ -80,17 +87,32 @@ export default function IAFormSection() {
         }}
       >
         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4 text-center">
-          🚀 Test the AI Model
+           <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />Test the AI Model
         </h2>
-        <p className="text-base md:text-lg mb-8 text-gray-300 text-center">
+        <p className="text-base md:text-lg mb-6 text-gray-300 text-center">
           Enter the stellar system parameters below to analyze the possibility of an exoplanet.
         </p>
+
+        {/* 🔘 New Button to Explanation Section */}
+        <div className="flex justify-center mb-10">
+          <button
+            onClick={scrollToParameters}
+            className="bg-transparent border border-blue-400 hover:bg-blue-500 hover:text-white text-blue-400 px-6 py-2 rounded-full font-medium transition-all"
+          >
+            Learn about the parameters ↓
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
           {fields.map((f) => (
             <div key={f.name} className="flex items-center gap-4">
               <label className="text-gray-300 text-sm w-48 flex-shrink-0">
-                {f.label} <span className="text-gray-500 text-xs">({f.name})</span>
+                {f.label}{" "}
+                <span className="text-gray-500 text-xs">({f.name})</span>
               </label>
               <input
                 type="number"

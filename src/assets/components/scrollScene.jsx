@@ -6,6 +6,7 @@ import Saturn from "./saturn";
 import Sun from "./sun";
 import IAFormSection from "./iaFormSection";  
 import IAInstructions from "./iaInstructions";  
+import ProjectDocumentation from "./projectDocumentation";  
 import Planet from "./planet";
 
 function ScrollScene() {
@@ -15,7 +16,7 @@ function ScrollScene() {
         <ambientLight intensity={1} />
         <directionalLight position={[5, 5, 5]} />
         <Suspense fallback={null}>
-          <ScrollControls pages={10} damping={0.2}>
+          <ScrollControls pages={11} damping={0.2}>
             <Scroll>
               <ScrollObjects />
             </Scroll>
@@ -508,7 +509,12 @@ width: "100%",
 >
   {/* Título */}
   <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-    <h2 className="text-4xl md:text-5xl font-bold mb-2">Our Crew</h2>
+    <h2 className="text-4xl md:text-5xl font-bold mb-2">
+       <img 
+    src="/Logo_Page.png" 
+    alt="Logo" 
+    style={{ width: "40px", height: "40px", objectFit: "contain" }} 
+  />Our Crew</h2>
     <p className="text-base md:text-lg" style={{ maxWidth: "700px", margin: "0 auto", color: "#ccc" }}>
       Behind ExoKeplerAlly is a multidisciplinary team of engineering students who share a common passion for space and see it as the direction of humanity’s future.
     </p>
@@ -610,9 +616,7 @@ width: "100%",
 
 
  <IAInstructions/>
-
-
-
+ <ProjectDocumentation/>
 
     </div>
   );

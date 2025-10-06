@@ -1,5 +1,5 @@
 export default function Navbar() {
-  
+
    const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -55,7 +55,7 @@ export default function Navbar() {
         </li>
         <li
           style={{ cursor: "pointer" }}
-          onClick={() => scrollToSection("documentation")}
+          onClick={() => scrollToSection("project-documentation")}
         >
           Documentation
         </li>

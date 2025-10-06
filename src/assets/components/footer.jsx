@@ -10,7 +10,7 @@ export default function Footer() {
         bottom: 0
       }}
     >
-      <p>© 2025 ExoAI Project — NASA Space Apps Challenge</p>
+      <p>© 2025 ExoKeplerAlly — NASA Space Apps Challenge</p>
     </footer>
   )
 }
