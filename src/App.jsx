@@ -11,7 +11,7 @@ function App() {
   return (
     <div 
     
-    style={{ overflow: 'hidden', minHeight: '100vh}', position: 'relative' }}>
+    style={{ overflow: 'hidden', minHeight: '100vh', position: 'relative' }}>
       <SpaceBackground />
       <Navbar />
         <ScrollScene />
